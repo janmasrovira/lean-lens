@@ -1,0 +1,10 @@
+name = "lean-lens"
+version = "0.1.0"
+defaultTargets = ["lean-lens"]
+
+[[lean_lib]]
+name = "LeanLens"
+
+[[lean_exe]]
+name = "lean-lens"
+root = "Main"
