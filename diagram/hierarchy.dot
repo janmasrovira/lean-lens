@@ -1,0 +1,33 @@
+digraph LeanLensHierarchy {
+  rankdir=TB;
+  node [shape=box, fontname="monospace", style=rounded];
+  edge [fontname="monospace", fontsize=10];
+
+  LensLike      [label="LensLike f s t a b\n(a → f b) → s → f t\nfree functor f"];
+  Lens          [label="Lens s t a b\n∀ f [Functor f]"];
+  Traversal     [label="Traversal s t a b\n∀ f [Applicative f]"];
+  SimpleGetter  [label="SimpleGetter s a\nf = Const r"];
+  ASetter       [label="ASetter s t a b\nf = Id"];
+  Getting       [label="Getting r s a\nf = Const r (fixed r)"];
+  SimpleFold    [label="SimpleFold s a\nf = Const r [Monoid r]", style="rounded,dashed"];
+
+  LensLike -> Lens      [label=" ∀ f, [Functor f]"];
+  LensLike -> Traversal [label=" ∀ f, [Applicative f]"];
+
+  Lens -> Traversal    [label=" Applicative ⇒ Functor"];
+  Lens -> SimpleGetter [label=" f := Const r"];
+  Lens -> ASetter      [label=" f := Id"];
+
+  Traversal -> ASetter    [label=" f := Id"];
+  Traversal -> SimpleFold [label=" f := Const r"];
+
+  SimpleGetter -> Getting    [label=" pick r"];
+  SimpleGetter -> SimpleFold [label=" needs Monoid r"];
+
+  { rank=same; ASetter; SimpleGetter; }
+  { rank=same; Getting; SimpleFold; }
+
+  label="\nlean-lens optic hierarchy\nedge A → B reads: \"an A can be used as a B\" (by specializing the functor f)\ndashed = not yet implemented";
+  labelloc="b";
+  fontname="monospace";
+}
