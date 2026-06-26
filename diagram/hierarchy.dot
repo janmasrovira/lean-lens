@@ -11,9 +11,7 @@ digraph LeanLensHierarchy {
   Getting       [label=<Getting r s a<BR/>f = Const r <FONT FACE="Helvetica-Oblique" POINT-SIZE="10">r fixed</FONT>>];
   SimpleFold    [label=<SimpleFold s a<BR/>f = Const r [Monoid r]>];
 
-  LensLike -> Lens;
-  LensLike -> Traversal;
-
+  Lens -> Traversal;
   Lens -> SimpleGetter;
   Lens -> ASetter;
 
@@ -22,6 +20,10 @@ digraph LeanLensHierarchy {
 
   SimpleGetter -> Getting;
   SimpleGetter -> SimpleFold;
+
+  ASetter      -> LensLike;
+  Getting      -> LensLike;
+  SimpleFold   -> LensLike;
 
   { rank=same; ASetter; SimpleGetter; }
   { rank=same; Getting; SimpleFold; }
