@@ -10,8 +10,10 @@ def ASetter (s t a b : Type) := (a → Id b) → s → Id t
 
 def ASetter' (s a : Type) := ASetter s s a a
 
+-- Use in a combinator's argument type to consume a getter.
 def Getting (r s a : Type) := (a → Const r a) → s → Const r s
 
+-- Use in getter definition.
 def SimpleGetter (s a : Type) := ∀ {r : Type}, Getting r s a
 
 def SimpleFold (s a : Type) := ∀ {r : Type} [Monoid r], Getting r s a
