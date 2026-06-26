@@ -2,6 +2,11 @@ name = "lean-lens"
 version = "0.1.0"
 defaultTargets = ["lean-lens"]
 
+[leanOptions]
+pp.unicode.fun = true
+pp.fieldNotation = false
+autoImplicit = false
+
 [[require]]
 name = "mathlib"
 scope = "leanprover-community"

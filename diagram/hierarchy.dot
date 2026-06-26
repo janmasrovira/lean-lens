@@ -3,31 +3,30 @@ digraph LeanLensHierarchy {
   node [shape=box, fontname="monospace", style=rounded];
   edge [fontname="monospace", fontsize=10];
 
-  LensLike      [label="LensLike f s t a b\n(a → f b) → s → f t\nfree functor f"];
-  Lens          [label="Lens s t a b\n∀ f [Functor f]"];
-  Traversal     [label="Traversal s t a b\n∀ f [Applicative f]"];
-  SimpleGetter  [label="SimpleGetter s a\nf = Const r"];
-  ASetter       [label="ASetter s t a b\nf = Id"];
-  Getting       [label="Getting r s a\nf = Const r (fixed r)"];
-  SimpleFold    [label="SimpleFold s a\nf = Const r [Monoid r]", style="rounded,dashed"];
+  LensLike      [label=<LensLike f s t a b<BR/>(a → f b) → s → f t<BR/>f : Type → Type>];
+  Lens          [label=<Lens s t a b<BR/>∀ f [Functor f]>];
+  Traversal     [label=<Traversal s t a b<BR/>∀ f [Applicative f]>];
+  SimpleGetter  [label=<SimpleGetter s a<BR/>f = Const r>];
+  ASetter       [label=<ASetter s t a b<BR/>f = Id>];
+  Getting       [label=<Getting r s a<BR/>f = Const r <FONT FACE="Helvetica-Oblique" POINT-SIZE="10">r fixed</FONT>>];
+  SimpleFold    [label=<SimpleFold s a<BR/>f = Const r [Monoid r]>];
 
-  LensLike -> Lens      [label=" ∀ f, [Functor f]"];
-  LensLike -> Traversal [label=" ∀ f, [Applicative f]"];
+  LensLike -> Lens;
+  LensLike -> Traversal;
 
-  Lens -> Traversal    [label=" Applicative ⇒ Functor"];
-  Lens -> SimpleGetter [label=" f := Const r"];
-  Lens -> ASetter      [label=" f := Id"];
+  Lens -> SimpleGetter;
+  Lens -> ASetter;
 
-  Traversal -> ASetter    [label=" f := Id"];
-  Traversal -> SimpleFold [label=" f := Const r"];
+  Traversal -> ASetter;
+  Traversal -> SimpleFold;
 
-  SimpleGetter -> Getting    [label=" pick r"];
-  SimpleGetter -> SimpleFold [label=" needs Monoid r"];
+  SimpleGetter -> Getting;
+  SimpleGetter -> SimpleFold;
 
   { rank=same; ASetter; SimpleGetter; }
   { rank=same; Getting; SimpleFold; }
 
-  label="\nlean-lens optic hierarchy\nedge A → B reads: \"an A can be used as a B\" (by specializing the functor f)\ndashed = not yet implemented";
+  label="\nlean-lens optic hierarchy\nedge A → B reads: \"an A can be used as a B\" (by specializing the functor f)";
   labelloc="b";
   fontname="monospace";
 }
