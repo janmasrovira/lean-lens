@@ -41,15 +41,6 @@ def toListOf (l : SimpleFold s a) (src : s) : List a :=
 
 end Folds
 
-section Operators
-
-infixl:1 " & " => fun x f => f x
-infixl:8 " ^. " => fun src l => view l src
-infixr:4 " .~ " => fun l v => set l v
-infixr:4 " %~ " => fun l f => over l f
-
-end Operators
-
 section Composition
 
 -- Lenses compose with ordinary function composition.
