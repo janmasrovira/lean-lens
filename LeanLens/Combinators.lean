@@ -1,0 +1,60 @@
+import LeanLens.Type
+import Mathlib.Algebra.FreeMonoid.Basic
+
+namespace LeanLens
+
+variable {s t a b c r : Type}
+
+section Builders
+
+def mkLens (get : s → a) (put : b → s → t) : Lens s t a b :=
+  fun {f} [Functor f] k src => (fun v => put v src) <$> k (get src)
+
+def mkSimpleGetter (g : s → a) : SimpleGetter s a :=
+  fun {_r} k src => ⟨(k (g src)).get⟩
+
+def mkASetter (m : (a → b) → s → t) : ASetter s t a b :=
+  fun k src => m (fun x => k x) src
+
+end Builders
+
+section Eliminators
+
+def view (l : Getting a s a) (src : s) : a :=
+  (l (fun x => ⟨x⟩) src).get
+
+def over (l : ASetter s t a b) (g : a → b) (src : s) : t :=
+  l g src
+
+def set (l : ASetter s t a b) (v : b) (src : s) : t :=
+  over l (fun _ => v) src
+
+end Eliminators
+
+section Folds
+
+def foldMapOf (l : Getting r s a) (f : a → r) (src : s) : r :=
+  (l (fun x => ⟨f x⟩) src).get
+
+def toListOf (l : SimpleFold s a) (src : s) : List a :=
+  foldMapOf (r := FreeMonoid a) l FreeMonoid.of src
+
+end Folds
+
+section Operators
+
+infixl:1 " & " => fun x f => f x
+infixl:8 " ^. " => fun src l => view l src
+infixr:4 " .~ " => fun l v => set l v
+infixr:4 " %~ " => fun l f => over l f
+
+end Operators
+
+section Composition
+
+-- Lenses compose with ordinary function composition.
+example (l : Lens s t a b) (l' : Lens a b c c) : Lens s t c c := l ∘ l'
+
+end Composition
+
+end LeanLens

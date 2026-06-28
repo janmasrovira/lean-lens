@@ -1,7 +1,7 @@
 import LeanLens.Type
 
--- Proofs of every edge in `diagram/hierarchy.dot`: each edge A → B reads
--- "an A can be used as a B", which here is exactly specializing the functor f.
+-- Proofs of the edges in `diagram/hierarchy.dot`: each edge A → B means
+-- "an A can be used as a B"
 
 namespace LeanLens.Hierarchy
 
