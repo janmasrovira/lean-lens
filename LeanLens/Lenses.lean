@@ -10,4 +10,7 @@ def fst_ : Lens (a × c) (b × c) a b :=
 def snd_ : Lens (c × a) (c × b) a b :=
   fun {f} [Functor f] k p => (fun x => (p.1, x)) <$> k p.2
 
+def both : Traversal (a × a) (b × b) a b :=
+  fun {f} [Applicative f] k p => Prod.mk <$> k p.1 <*> k p.2
+
 end LeanLens
