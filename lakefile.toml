@@ -21,6 +21,11 @@ rev = "v4.31.0"
 name = "LeanLens"
 
 [[lean_lib]]
+name = "LeanLensTests"
+srcDir = "test"
+globs = ["LeanLensTests.+"]
+
+[[lean_lib]]
 name = "LeanLensDocs"
 
 [[lean_exe]]

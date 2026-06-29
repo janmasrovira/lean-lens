@@ -1,3 +1,4 @@
+import LeanLens.ADoNotation
 import LeanLens.Internal
 import LeanLens.Type
 import LeanLens.Hierarchy
