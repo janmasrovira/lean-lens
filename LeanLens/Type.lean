@@ -1,4 +1,8 @@
-import LeanLens.Internal
+module
+
+public import LeanLens.Internal
+
+@[expose] public section
 
 namespace LeanLens
 

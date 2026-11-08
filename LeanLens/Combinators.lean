@@ -1,5 +1,9 @@
-import LeanLens.Type
-import Mathlib.Algebra.FreeMonoid.Basic
+module
+
+public import LeanLens.Type
+public import Mathlib.Algebra.FreeMonoid.Basic
+
+@[expose] public section
 
 namespace LeanLens
 

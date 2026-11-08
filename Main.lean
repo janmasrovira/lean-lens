@@ -1,4 +1,6 @@
+module
+
 import LeanLens
 
-def main : IO Unit :=
+public def main : IO Unit :=
   IO.println "lean-lens"

@@ -1,4 +1,8 @@
-import Lean
+module
+
+public meta import Lean.Elab.Macro
+
+public meta section
 
 /-!
 # Applicative Do-Notation

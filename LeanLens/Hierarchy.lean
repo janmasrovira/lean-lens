@@ -1,4 +1,8 @@
-import LeanLens.Type
+module
+
+public import LeanLens.Type
+
+@[expose] public section
 
 -- Proofs of the edges in `diagram/hierarchy.dot`: each edge A → B means
 -- "an A can be used as a B"

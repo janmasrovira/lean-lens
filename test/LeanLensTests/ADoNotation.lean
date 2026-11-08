@@ -1,4 +1,7 @@
-import LeanLens
+module
+
+import all LeanLens
+meta import LeanLens
 
 /-!
 # Tests for `ado` applicative do-notation

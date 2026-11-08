@@ -1,9 +1,16 @@
-import VersoManual
-import LeanLens
+module
+
+public import VersoManual
+public import LeanLens
+import all LeanLens.Type
+import all LeanLens.Combinators
+import all LeanLens.Lenses
 
 open Verso.Genre Manual
 
 set_option verso.docstring.allowMissing true
+
+public section
 
 #doc (Manual) "LeanLens" =>
 

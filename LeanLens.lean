@@ -1,7 +1,9 @@
-import LeanLens.ADoNotation
-import LeanLens.Internal
-import LeanLens.Type
-import LeanLens.Hierarchy
-import LeanLens.Combinators
-import LeanLens.Lenses
-import LeanLens.Lawful
+module
+
+public import LeanLens.ADoNotation
+public import LeanLens.Internal
+public import LeanLens.Type
+public import LeanLens.Hierarchy
+public import LeanLens.Combinators
+public import LeanLens.Lenses
+public import LeanLens.Lawful

@@ -1,6 +1,8 @@
+module
+
 import VersoManual
 import LeanLensDocs
 
 open Verso.Genre.Manual
 
-def main := manualMain (%doc LeanLensDocs)
+public def main := manualMain (%doc LeanLensDocs)

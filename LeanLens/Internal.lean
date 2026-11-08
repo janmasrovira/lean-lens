@@ -1,4 +1,8 @@
-import Mathlib.Algebra.Group.Defs
+module
+
+public import Mathlib.Algebra.Group.Defs
+
+@[expose] public section
 
 namespace LeanLens
 

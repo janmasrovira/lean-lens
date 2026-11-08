@@ -1,4 +1,8 @@
-import LeanLens.Type
+module
+
+public import LeanLens.Type
+
+@[expose] public section
 
 namespace LeanLens
 

@@ -1,4 +1,8 @@
-import LeanLens.Combinators
+module
+
+public import LeanLens.Combinators
+
+@[expose] public section
 
 namespace LeanLens
 
